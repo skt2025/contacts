@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DHT Vessels – Goodwood Operations • Contacts & In-Charge</title>
+  <style>
+    :root{
+      --bg-grad-1: linear-gradient(135deg,#ecfeff 0%,#fff1f2 40%,#f5f3ff 100%);
+      --ribbon-grad: linear-gradient(90deg,#38bdf8,#fb7185,#a78bfa);
+      --text:#0f172a; --muted:#475569; --border:#e5e7eb; --shadow: 0 2px 6px rgba(0,0,0,.06);
+      /* Fleet colours */
+      --f3-pill-bg:#d1fae5; --f3-pill-txt:#065f46; --f3-pill-brd:#a7f3d0;
+      --f3-chip-bg:#ecfdf5; --f3-chip-brd:#a7f3d0;
+      --f5-pill-bg:#e0e7ff; --f5-pill-txt:#3730a3; --f5-pill-brd:#c7d2fe;
+      --f5-chip-bg:#eef2ff; --f5-chip-brd:#c7d2fe;
+      --hdr-grad: linear-gradient(90deg,#0284c7,#e11d48,#6d28d9);
+      --th1: linear-gradient(90deg,#bae6fd,#e0f2fe);
+      --th2: linear-gradient(90deg,#fecdd3,#ffe4e6);
+      --th3: linear-gradient(90deg,#ddd6fe,#ede9fe);
+      --btn-grad: linear-gradient(90deg,#fbbf24,#f59e0b);
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+      color:var(--text); background:var(--bg-grad-1);
+    }
+    .ribbon{height:4px;background:var(--ribbon-grad)}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background-color:rgba(255,255,255,.85); border-bottom:1px solid var(--border);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    h1{margin:0;font-size:28px;line-height:1.2;background:var(--hdr-grad);
+       -webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{color:var(--muted);font-size:14px;margin-top:4px}
+
+    .btn{border:1px solid #fcd34d; background:var(--btn-grad); color:#7c2d12;
+      border-radius:12px; padding:10px 14px; font-size:14px; cursor:pointer; box-shadow:var(--shadow)}
+    .btn:hover{filter:brightness(1.03)}
+
+    .grid{display:grid; gap:16px}
+    @media(min-width:800px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.9); box-shadow:var(--shadow)}
+    .card-h{display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 16px; border-bottom:1px solid var(--border); background:linear-gradient(90deg,#f8fafc,#ffffff);
+      border-top-left-radius:16px;border-top-right-radius:16px}
+    .card-b{padding:16px}
+    .badge{display:inline-flex; align-items:center; gap:6px;
+      border:1px solid var(--border); border-radius:999px; padding:3px 8px; font-size:12px; font-weight:600}
+    .chip{display:inline-block; padding:6px 10px; border:1px solid var(--border); border-radius:10px; font-size:13px; background:#f8fafc; cursor:help}
+
+    .panel{border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.92); box-shadow:var(--shadow)}
+    .panel-h{padding:12px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between}
+    .searchbar{display:flex; gap:12px; align-items:stretch; padding:12px 16px}
+    .searchbar input{flex:1; border:1px solid var(--border); border-radius:12px; padding:10px 12px; font-size:14px; box-shadow:inset 0 1px 2px rgba(0,0,0,.02)}
+    .count{font-size:13px; color:var(--muted)}
+    .table-wrap{overflow:auto; border-top:1px solid var(--border)}
+    table{width:100%; border-collapse:collapse; font-size:14px}
+    thead th{text-align:left; font-weight:700; padding:10px 12px; border-bottom:1px solid var(--border)}
+    thead th:nth-child(1){background:var(--th1)}
+    thead th:nth-child(2){background:var(--th2)}
+    thead th:nth-child(3){background:var(--th3)}
+    tbody td{padding:10px 12px; border-bottom:1px solid var(--border)}
+    tbody tr:nth-child(odd){background:#ffffff}
+    tbody tr:nth-child(even){background:#f8fafc}
+    tbody tr:hover{background:#fff7ed}
+    .dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:8px}
+    .dot-f3{background:linear-gradient(90deg,#10b981,#14b8a6)}
+    .dot-f5{background:linear-gradient(90deg,#6366f1,#d946ef)}
+
+    /* Floating side boxes (colourful, left-aligned) */
+    .side-box{
+      position: fixed;
+      right: 16px;
+      width: 260px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.18);
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      z-index: 50;
+      color:#0b1220;
+      background: #fff; /* fallback */
+      text-align:left;
+    }
+    /* Ops box: cool blue gradient */
+    #opsBox{
+      top: 120px;
+      background: linear-gradient(135deg,#e6f0ff 0%,#dbeafe 40%,#eef2ff 100%);
+      border-color:#93c5fd;
+    }
+    /* Weekend duty: warm pink-amber gradient, spaced below ops */
+    #dutyBox{
+      top: 300px;
+      background: linear-gradient(135deg,#ffe4f1 0%,#fde68a 100%);
+      border-color:#f9a8d4;
+    }
+    .side-title{display:block; font-weight:800; color:#1e3a8a; margin-bottom:4px}
+    .muted{color:var(--muted)}
+    .hover-name{cursor:help; font-weight:600}
+    /* two-line gap before Backup line */
+    #dutyBox .backup{ display:block; margin-top:2em; }
+
+    /* Tooltip */
+    .tooltip{position:fixed; z-index:60; pointer-events:none; max-width:320px;
+      background:#111827; color:#f9fafb; font-size:12px; line-height:1.4;
+      padding:8px 10px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.25); white-space:pre-wrap}
+
+    /* Print – keep colours and include side boxes */
+    @media print{
+      header, .searchbar, .btn {display:none !important}
+      body, .card, .panel, table th, table td, .chip, .badge, .side-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .side-box{
+        position: static !important;
+        width: auto !important;
+        margin: 10px 0 18px 0 !important;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ribbon"></div>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div>
+        <h1>DHT Vessels – Goodwood Operations </h1>
+        <div class="subtitle"><h2>In-Charge & Contacts</h2></div>
+      </div>
+      <button class="btn" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <!-- Colourful floating side boxes (numbers hidden; show on hover) -->
+  <aside id="opsBox" class="side-box">
+    <span class="side-title">Operations Manager</span>
+    <span class="hover-name" data-tip="Phone: +65 9788 3636">Capt. Muneesh Saxena</span>
+  </aside>
+
+  <aside id="dutyBox" class="side-box">
+    <span class="side-title">Weekend Duty - 20 to 21 Sept 2025</span>
+    <span class="hover-name" data-tip="Phone: +65 8938 8615">Capt. Selappan Kaarthi</span>
+    <span class="backup">
+      <span class="muted">Backup:</span><br>
+      <span class="hover-name" data-tip="Phone: +65 9664 2999">Capt. Shailesh Shanbaug</span><br>
+      <span class="hover-name" data-tip="Phone: +65 9788 3636">Capt. Muneesh Saxena</span>
+    </span>
+  </aside>
+
+  <main class="container" style="padding-top:12px;padding-bottom:24px">
+    <!-- Fleet Overview -->
+    <section class="grid" id="fleet-cards"></section>
+
+    <!-- Directory -->
+    <section class="panel" style="margin-top:18px">
+      <div class="panel-h">
+        <strong>Directory</strong>
+        <span class="count"><span id="shown">0</span> / <span id="total">0</span> listed</span>
+      </div>
+      <div class="searchbar">
+        <input id="q" type="search" placeholder="Search vessel, fleet, or superintendent…" />
+      </div>
+      <div class="table-wrap">
+        <table id="dir">
+          <thead>
+            <tr>
+              <th>Vessel</th>
+              <th>Fleet</th>
+              <th>Marine Superintendent</th>
+            </tr>
+          </thead>
+          <tbody><!-- rows injected by JS --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="ribbon"></div>
+
+  <script>
+    /* Tooltip (single floating element) */
+    (function(){
+      const tipEl = document.createElement('div');
+      tipEl.className = 'tooltip'; tipEl.style.display = 'none';
+      document.body.appendChild(tipEl);
+      let active = null;
+      function showTip(target, text, x, y){
+        tipEl.textContent = text; tipEl.style.display = 'block'; position(x,y); active = target;
+      }
+      function hideTip(){ tipEl.style.display = 'none'; active = null; }
+      function position(x, y){
+        const pad = 12, r = tipEl.getBoundingClientRect(), vw = innerWidth, vh = innerHeight;
+        let L = x + 14, T = y + 14; if (L + r.width + pad > vw) L = vw - r.width - pad; if (T + r.height + pad > vh) T = vh - r.height - pad;
+        tipEl.style.left = L + 'px'; tipEl.style.top = T + 'px';
+      }
+      document.addEventListener('mousemove', e => {
+        const t = e.target.closest('[data-tip]'); if (t){ const txt=t.getAttribute('data-tip'); if (txt) showTip(t, txt, e.clientX, e.clientY); }
+        else if (active){ hideTip(); }
+      });
+      addEventListener('scroll', () => { if (active) hideTip(); }, { passive:true });
+    })();
+
+    /* CONTACTS (vessel hover details) */
+    const CONTACTS = {
+      "DHT Amazon":   { vm:"+65 3163 2830", vb:"+65 3163 2829", fbb:"+870 773 407 259", email:"dht.amazon@goodwoodfleet.com", voip1:"82-5631", voip2:"82-5632" },
+      "DHT Appaloosa":{ vm:"+65 3125 2323", vb:"+65 3125 2365", fbb:"+870 773 065 759", email:"dht.appaloosa@goodwoodfleet.com", voip1:"82-5621", voip2:"82-5622" },
+      "DHT Bauhinia": { vm:"+65 3174 2820", vb:"+65 3165 6460", fbb:"+870 773 064 085", email:"dht.bauhinia@goodwoodfleet.com", voip1:"82-5701", voip2:"82-5702" },
+      "DHT Bronco":   { vm:"+65 3165 2049", vb:"+65 3165 2050", fbb:"+870 773 230 510", email:"dht.bronco@goodwoodfleet.com", voip1:"82-5481", voip2:"82-5482" },
+      "DHT China":    { vm:"+65 3163 0258", vb:"+65 3163 0259", fbb:"+870 773 934 408", email:"dht.china@goodwoodfleet.com", voip1:"82-5221", voip2:"82-5222" },
+      "DHT Colt":     { vm:"+65 3165 2021", vb:"+65 3165 2022", fbb:"+870 773 230 082", email:"dht.colt@goodwoodfleet.com", voip1:"82-5471", voip2:"82-5472" },
+      "DHT Europe":   { vm:"+65 3163 0262", vb:"+65 3163 0260", fbb:"+870 773 934 407", email:"dht.europe@goodwoodfleet.com", voip1:"82-5531", voip2:"82-5532" },
+      "DHT Harrier":  { vm:"+65 3125 2361", vb:"+65 3125 2362", fbb:"+870 773 061 916", email:"dht.harrier@goodwoodfleet.com", voip1:"82-5591", voip2:"82-5592" },
+      "DHT Jaguar":   { vm:"+65 3125 6099", vb:"+65 3125 6098", fbb:"+870 773 910 621", email:"dht.jaguar@goodwoodfleet.com", voip1:"82-5501", voip2:"82-5502" },
+      "DHT Leopard":  { vm:"+65 3125 4699", vb:"+65 3125 4698", fbb:"+870 773 273 199", email:"dht.leopard@goodwoodfleet.com", voip1:"3106 5684" },
+      "DHT Lion":     { vm:"+65 3106 5645", vb:"+65 3106 5646", fbb:"+881 677 100 571", email:"dht.lion@goodwoodfleet.com", voip1:"82-5401", voip2:"82-5402" },
+      "DHT Mustang":  { vm:"+65 3165 2122", vb:"+65 3165 2123", fbb:"+870 773 154 410", email:"dht.mustang@goodwoodfleet.com", voip1:"82-5491", voip2:"82-5492" },
+      "DHT Opal":     { vm:"+65 3174 2997", vb:"+65 3174 2996", fbb:"+870 773 068 087", email:"dht.opal@goodwoodfleet.com", voip1:"82-5411", voip2:"82-5412" },
+      "DHT Osprey":   { vm:"+65 3125 2363", vb:"+65 3125 2364", fbb:"+870 773 409 096", email:"dht.osprey@goodwoodfleet.com", voip1:"82-5611", voip2:"82-5612" },
+      "DHT Panther":  { vm:"+65 3125 6487", vb:"+65 3125 6486", fbb:"+881 677 121 883", email:"dht.panther@goodwoodfleet.com", voip1:"82-5211", voip2:"82-5212" },
+      "DHT Puma":     { vm:"+65 3125 4425", vb:"+65 3125 1716", fbb:"+870 773 261 549", email:"dht.puma@goodwoodfleet.com", voip1:"3106 5673" },
+      "DHT Redwood":  { vm:"+65 3158 4114", vb:"+65 3158 4113", fbb:"+870 773 407 633", email:"dht.redwood@goodwoodfleet.com", voip1:"82-5381", voip2:"82-5382" },
+      "DHT Stallion": { vm:"+65 3165 2018", vb:"+65 3165 2019", fbb:"+870 773 158 335", email:"dht.stallion@goodwoodfleet.com", voip1:"82-5461", voip2:"82-5462" },
+      "DHT Sundarbans":{ vm:"+65 3163 4704", vb:"+65 3163 4705", fbb:"+870 773 804 023", email:"dht.sundarabans@goodwoodfleet.com", voip1:"82-5091", voip2:"82-5092" },
+      "DHT Taiga":    { vm:"+65 3163 9840", vb:"+65 3163 9841", fbb:"+870 773 155 008", email:"dht.taiga@goodwoodfleet.com", voip1:"82-5261", voip2:"82-5262" },
+      "DHT Tiger":    { vm:"+65 3125 4661", vb:"+65 3125 4660", fbb:"+870 773 273 200", email:"dht.tiger@goodwoodfleet.com", voip1:"3106 5683" }
+    };
+
+    /* Fleets grouping */
+    const FLEETS = [
+      { id:"fleet-3", name:"Fleet 3", palette:{pillBg:"var(--f3-pill-bg)", pillTxt:"var(--f3-pill-txt)", pillBrd:"var(--f3-pill-brd)", chipBg:"var(--f3-chip-bg)", chipBrd:"var(--f3-chip-brd)", dotClass:"dot-f3"},
+        superintendent:"Capt. Shailesh Shanbaug",
+        vessels:["DHT Appaloosa","DHT Bronco","DHT China","DHT Colt","DHT Europe","DHT Jaguar","DHT Leopard","DHT Lion","DHT Mustang","DHT Opal","DHT Puma","DHT Stallion"]
+      },
+      { id:"fleet-5", name:"Fleet 5", palette:{pillBg:"var(--f5-pill-bg)", pillTxt:"var(--f5-pill-txt)", pillBrd:"var(--f5-pill-brd)", chipBg:"var(--f5-chip-bg)", chipBrd:"var(--f5-chip-brd)", dotClass:"dot-f5"},
+        superintendent:"Capt. Selappan Kaarthi",
+        vessels:["DHT Amazon","DHT Bauhinia","DHT Harrier","DHT Osprey","DHT Panther","DHT Redwood","DHT Sundarbans","DHT Taiga","DHT Tiger"]
+      }
+    ];
+
+    /* Directory rows */
+    const ALL_ROWS = FLEETS.flatMap(f =>
+      f.vessels.map(v => ({ vessel:v, fleet:f.name, superintendent:f.superintendent, palette:f.palette }))
+    ).sort((a,b)=> a.vessel.localeCompare(b.vessel));
+
+    /* Fleet cards */
+    const cardsEl = document.getElementById('fleet-cards');
+    for (const f of FLEETS) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-h">
+          <h2 style="margin:0">${f.name}</h2>
+        </div>
+        <div class="card-b">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span class="dot ${f.palette.dotClass}"></span>
+            <div>
+              <div class="muted" style="font-size:12px">Marine Superintendent</div>
+              <div class="badge" data-tip="${f.superintendent.includes('Shailesh') ? '+65 9664 2999' : '+65 8938 8615'}" style="cursor:help">
+                ${f.superintendent}
+              </div>
+            </div>
+          </div>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+            ${f.vessels.map(v=>{
+              const c = CONTACTS[v];
+              const tip = c ? `
+${v}
+VSAT Master: ${c.vm}
+VSAT Bridge: ${c.vb}
+FBB/Iridium: ${c.fbb}
+Email: ${c.email}
+VOIP: ${c.voip1}${c.voip2 ? ', '+c.voip2 : ''}`.trim() : `${v}\n(No contact data)`;
+              return `<span class="chip" style="background:${f.palette.chipBg};border-color:${f.palette.chipBrd}"
+                           data-tip="${tip.replace(/"/g,'\\\"')}">${v}</span>`;
+            }).join('')}
+          </div>
+        </div>`;
+      cardsEl.appendChild(card);
+    }
+
+    /* Directory table */
+    const tbody = document.querySelector('#dir tbody');
+    const shownEl = document.getElementById('shown');
+    const totalEl = document.getElementById('total');
+    totalEl.textContent = ALL_ROWS.length;
+
+    function rowTip(vessel){
+      const c = CONTACTS[vessel];
+      if (!c) return vessel;
+      return `${vessel}
+VSAT Master: ${c.vm}
+VSAT Bridge: ${c.vb}
+FBB/Iridium: ${c.fbb}
+Email: ${c.email}
+VOIP: ${c.voip1}${c.voip2 ? ', '+c.voip2 : ''}`;
+    }
+
+    function renderRows(rows){
+      tbody.innerHTML = rows.map(r => `
+        <tr>
+          <td>
+            <span class="dot ${r.palette.dotClass}"></span>
+            <span class="chip" data-tip="${rowTip(r.vessel).replace(/"/g,'\\\"')}" style="border-color:${r.palette.chipBrd}; background:${r.palette.chipBg}">
+              ${r.vessel}
+            </span>
+          </td>
+          <td>
+            <span class="badge" style="background:${r.palette.pillBg};color:${r.palette.pillTxt};border-color:${r.palette.pillBrd}">${r.fleet}</span>
+          </td>
+          <td>
+            <span class="badge" data-tip="${r.superintendent.includes('Shailesh') ? '+65 9664 2999' : '+65 8938 8615'}" style="cursor:help">
+              ${r.superintendent}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+      shownEl.textContent = rows.length;
+    }
+    renderRows(ALL_ROWS);
+
+    /* Search */
+    const q = document.getElementById('q');
+    q.addEventListener('input', () => {
+      const t = q.value.trim().toLowerCase();
+      if(!t){ renderRows(ALL_ROWS); return; }
+      const filtered = ALL_ROWS.filter(r =>
+        r.vessel.toLowerCase().includes(t) ||
+        r.fleet.toLowerCase().includes(t) ||
+        r.superintendent.toLowerCase().includes(t)
+      );
+      renderRows(filtered);
+    });
+  </script>
+</body>
+</html>
